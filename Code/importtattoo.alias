@@ -74,27 +74,35 @@ def main(input_list: list[str]) -> str:
         "Shadowfell Brand"
     ]
 
+    # Search tattoo list for match, if it find at least one
     if (search_result := search_list(input_list[0], tattoo_list)):
 
+        # If it finds exactly one match, update input
         if len(search_result) == 1:
             input_list[0] = search_result[0]
 
+        # If it finds more than one match
         else:
 
+            # If it finds an exact match, update input
             if (search_result2 := multiple_match_determine(search_result, input_list[0])):
                 input_list[0] = search_result2
 
+            # If it does not find an exact match
             else:
                 search_result.insert(0, "**Multiple Matches Found:**")
 
                 err("\n".join(search_result))
 
+    # If no match was found
     else:
         err(f"Tattoo not found (`{input_list[0]}`)")
 
 
+    # Match tattoo name
     match input_list[0]:
 
+        # Absorbing Tattoo
         case "Absorbing":
             ch.create_cc_nx(
                 name="Absorbing Tattoo",
@@ -135,9 +143,11 @@ proper: true
 verb: uses their
 list_display_override: 'Uses absorbing tattoo, use `-amt #` to signify how much damage you are absorbing'"""
 
+        # Barrier
         case "Barrier":
             err("This tattoo does not import any CCs or actions")
 
+        # Blood Fury
         case "Blood Fury":
             ch.create_cc_nx(
                 name="Blood Fury Tattoo",
@@ -198,6 +208,7 @@ list_display_override: 'Uses absorbing tattoo, use `-amt #` to signify how much 
     with advantage on your attack roll.
   activation_type: 4"""
 
+        # Coiling Grasp
         case "Coiling Grasp":
             return """
 name: Grasping Tendrils
@@ -246,6 +257,7 @@ verb: uses their
 activation_type: 1
 list_display_override: You can, as an action, cause the tattoo to extrude into inky tendrils, which reach for a creature you can see within 15 feet of you."""
 
+        # Eldritch Claw
         case "Eldritch Claw":
             ch.create_cc_nx(
                 name= "Eldritch Claw Tattoo",
@@ -288,6 +300,7 @@ verb: uses their
 activation_type: 3
 list_display_override: As a bonus action, you can empower the tattoo for 1 minute. For the duration, each of your melee attacks can reach a target up to 15 feet away from you, as inky tendrils launch toward the target."""
 
+        # Ghost Step
         case "Ghost Step":
             ch.create_cc_nx(
                 name="Ghost Step Tattoo",
@@ -342,7 +355,7 @@ list_display_override: As a bonus action while the tattoo is on your skin, you
   your next turn.
 """
 
-
+        # Illuminator's
         case "Illuminator's":
             ch.create_cc_nx(
                 name="Illuminator's Tattoo",
@@ -373,6 +386,7 @@ verb: uses their
 activation_type: 1
 list_display_override: As an action, you can touch a piece of writing up to one page in length and speak a creature's name. The writing becomes invisible to everyone other than you and the named creature for the next 24 hours."""
 
+        # Lifewell
         case "Lifewell":
             ch.create_cc_nx(
                 name="Lifewell Tattoo",
@@ -413,6 +427,7 @@ proper: true
 verb: uses 
 list_display_override: When you would be reduced to 0 hit points, you drop to 1 hit point instead. Once used, this property can't be used again until the next dawn."""
 
+        # Masquerade
         case "Masquerade":
             ch.create_cc_nx(
                 name="Masquerade Tattoo",
@@ -455,7 +470,7 @@ list_display_override: When you would be reduced to 0 hit points, you drop to 1 
   verb: uses
   list_display_override: As an action, you can use the tattoo to cast the disguise self spell (DC 13 to discern the disguise). Once the spell is cast from the tattoo, it can't be cast from the tattoo again until the next dawn."""
 
-
+        # Shadowfell Brand
         case "Shadowfell Brand":
             ch.create_cc_nx(
                 name="Shadowfell Brand Tattoo",
@@ -496,6 +511,8 @@ verb: uses their
 activation_type: 4
 list_display_override: 'When you take damage, you can use your reaction to become insubstantial for a moment, halving the damage you take. Use `-amt #` for damage taken.'
 """
+
+        # In case I forget to update this list in the future
         case _:
             err(f"ShadowsStride has not setup the {input_list[0]} tattoo, please message him to fix this.")
 
