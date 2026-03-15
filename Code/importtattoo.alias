@@ -104,11 +104,12 @@ def main(input_list: list[str]) -> str:
                 dispType="bubble",
                 reset_to="1",
                 title="Absorbing Tattoo",
-                desc="Produced by a special needle, this magic tattoo features designs that emphasize one color.\nTattoo Attunement. To attune to this item, you hold the needle to your skin where you want the tattoo to appear, pressing the needle there throughout the attunement process. When the attunement is complete, the needle turns into the ink that becomes the tattoo, which appears on the skin. If your attunement to the tattoo ends, the tattoo vanishes, and the needle reappears in your space.\nDamage Resistance. While the tattoo is on your skin, you have resistance to a type of damage associated with that color, as shown on the table below. The DM chooses the color or determines it randomly.\nDamage Absorption. When you take damage of the chosen type, you can use your reaction to gain immunity against that instance of the damage, and you regain a number of hit points equal to half the damage you would have taken. Once this reaction is used, it can't be used again until the next dawn.",
+                desc="Produced by a special needle, this magic tattoo features designs that emphasize one color.",
                 initial_value="1"
             )
 
-            return """name: Damage Absorption
+            return """
+name: Damage Absorption
 automation:
   - type: counter
     counter: Absorbing Tattoo
@@ -146,10 +147,12 @@ list_display_override: 'Uses absorbing tattoo, use `-amt #` to signify how much 
                 dispType="bubble",
                 reset_to="10",
                 title="Blood Fury Tattoo",
-                desc="Produced by a special needle, this magic tattoo evokes fury in its form and colors.\nTattoo Attunement. To attune to this item, you hold the needle to your skin where you want the tattoo to appear, pressing the needle there throughout the attunement process. When the attunement is complete, the needle turns into the ink that becomes the tattoo, which appears on the skin.\nIf your attunement to the tattoo ends, the tattoo vanishes, and the needle reappears in your space.\nBloodthirsty Strikes. The tattoo has 10 charges, and it regains all expended charges daily at dawn. While this tattoo is on your skin, you gain the following benefits:\n- When you hit a creature with a weapon attack, you can expend a charge to deal an extra 4d6 necrotic damage to the target, and you regain a number of hit points equal to the necrotic damage dealt.\n- When a creature you can see damages you, you can expend a charge and use your reaction to make a melee attack against that creature, with advantage on your attack roll."
+                desc="Produced by a special needle, this magic tattoo evokes fury in its form and colors.",
+                initial_value="10"
             )
 
-            return """- name: Bloodthirsty Strikes (Bonus Necrotic)
+            return """
+- name: Bloodthirsty Strikes (Bonus Necrotic)
   automation:
     - type: counter
       counter: Blood Fury Tattoo
@@ -196,7 +199,8 @@ list_display_override: 'Uses absorbing tattoo, use `-amt #` to signify how much 
   activation_type: 4"""
 
         case "Coiling Grasp":
-            return """name: Grasping Tendrils
+            return """
+name: Grasping Tendrils
 automation:
   - type: target
     target: all
@@ -240,7 +244,7 @@ _v: 2
 proper: true
 verb: uses their
 activation_type: 1
-list_display_override: You can, as an action, cause the tattoo to extrude into inky tendrils, which reach for a creature you can see within 15 feet of you. The creature must succeed on a DC 14 Strength saving throw or take 3d6 force damage and be grappled by you."""
+list_display_override: You can, as an action, cause the tattoo to extrude into inky tendrils, which reach for a creature you can see within 15 feet of you."""
 
         case "Eldritch Claw":
             ch.create_cc_nx(
@@ -251,10 +255,12 @@ list_display_override: You can, as an action, cause the tattoo to extrude into i
                 dispType="bubble",
                 reset_to="1",
                 title="Eldritch Claw Tattoo",
-                desc="Produced by a special needle, this magic tattoo depicts clawlike forms and other jagged shapes.\nTattoo Attunement. To attune to this item, you hold the needle to your skin where you want the tattoo to appear, pressing the needle there throughout the attunement process. When the attunement is complete, the needle turns into the ink that becomes the tattoo, which appears on the skin.\nIf your attunement to the tattoo ends, the tattoo vanishes, and the needle reappears in your space.\nMagical Strikes. While the tattoo is on your skin, your unarmed strikes are considered magical for the purpose of overcoming immunity and resistance to nonmagical attacks, and you gain a +1 bonus to attack and damage rolls with unarmed strikes.\nEldritch Maul. As a bonus action, you can empower the tattoo for 1 minute. For the duration, each of your melee attacks with a weapon or an unarmed strike can reach a target up to 15 feet away from you, as inky tendrils launch toward the target. In addition, your melee attacks deal an extra 1d6 force damage on a hit. Once used, this bonus action can't be used again until the next dawn."
+                desc="Produced by a special needle, this magic tattoo depicts clawlike forms and other jagged shapes.",
+                initial_value="1"
             )
 
-            return """name: Eldritch Maul
+            return """
+name: Eldritch Maul
 automation:
   - type: counter
     counter: Eldritch Claw Tattoo
@@ -286,29 +292,31 @@ list_display_override: As a bonus action, you can empower the tattoo for 1 minut
             ch.create_cc_nx(
                 name="Ghost Step Tattoo",
                 minVal="0",
-                maxval="3",
+                maxVal="3",
                 reset="long",
                 dispType="bubble",
                 reset_to="3",
                 title="Ghost Step Tattoo",
-                desc="Produced by a special needle, this tattoo shifts and wavers on the skin, parts of it appearing blurred.\nTattoo Attunement. To attune to this item, you hold the needle to your skin where you want the tattoo to appear, pressing the needle there throughout the attunement process. When the attunement is complete, the needle turns into the ink that becomes the tattoo, which appears on the skin.\nIf your attunement to the tattoo ends, the tattoo vanishes, and the needle reappears in your space.\nGhostly Form. The tattoo has 3 charges, and it regains all expended charges daily at dawn. As a bonus action while the tattoo is on your skin, you can expend 1 of the tattoo's charges to become incorporeal until the end of your next turn. For the duration, you gain the following benefits:\nYou have resistance to bludgeoning, piercing, and slashing damage from nonmagical attacks.\nYou can't be grappled or restrained.\nYou can move through creatures and solid objects as if they were difficult terrain. If you end your turn in a solid object, you take 1d10 force damage. If the effect ends while you are inside a solid object, you instead are shunted to the nearest unoccupied space, and you take 1d10 force damage for every 5 feet traveled.",
+                desc="Produced by a special needle, this tattoo shifts and wavers on the skin, parts of it appearing blurred.",
                 initial_value="3"
             )
 
-            return """name: Ghostly Form
+            return """
+_v: 2
+name: Ghostly Form
 automation:
   - type: counter
     counter: Ghost Step Tattoo
     amount: "1"
-    fixedValue: true
+    allowOverflow: false
     errorBehaviour: raise
+    fixedValue: true
   - type: target
     target: self
     effects:
       - type: ieffect2
         name: Ghostly Form
         duration: "2"
-        end: true
         effects:
           resistances:
             - Nonmagical Bludgeoning
@@ -317,14 +325,21 @@ automation:
           immunities:
             - Grappled
             - Restrained
+        attacks: []
+        buttons: []
+        end: true
+        conc: false
+        stacking: false
+        target_self: false
+        tick_on_caster: false
   - type: text
-    text: The tattoo has 3 charges, and it regains all expended charges daily at dawn. As a bonus action while the tattoo is on your skin, you can expend 1 of the tattoo's charges to become incorporeal until the end of your next turn. For the duration, you gain the following benefits:\n\nYou have resistance to bludgeoning, piercing, and slashing damage from nonmagical attacks.\nYou can't be grappled or restrained.\nYou can move through creatures and solid objects as if they were difficult terrain. If you end your turn in a solid object, you take 1d10 force damage. If the effect ends while you are inside a solid object, you instead are shunted to the nearest unoccupied space, and you take 1d10 force damage for every 5 feet traveled.
+    text: The tattoo has 3 charges, and it regains all expended charges daily at dawn. As a bonus action while the tattoo is on your skin, you can expend 1 of the tattoo's charges to become incorporeal until the end of your next turn. You can move through creatures and solid objects as if they were difficult terrain. If you end your turn in a solid object, you take 1d10 force damage. If the effect ends while you are inside a solid object, you instead are shunted to the nearest unoccupied space, and you take 1d10 force damage for every 5 feet traveled.
     title: Ghostly Form
-_v: 2
-proper: false
 verb: uses their
 activation_type: 3
-list_display_override: The tattoo has 3 charges, and it regains all expended charges daily at dawn. As a bonus action while the tattoo is on your skin, you can expend 1 of the tattoo's charges to become incorporeal until the end of your next turn.
+list_display_override: As a bonus action while the tattoo is on your skin, you
+  can expend 1 of the tattoo's charges to become incorporeal until the end of
+  your next turn.
 """
 
 
@@ -337,12 +352,13 @@ list_display_override: The tattoo has 3 charges, and it regains all expended cha
                 dispType="bubble",
                 reset_to="1",
                 title="Illuminator's Tattoo",
-                desc="Produced by a special needle, this magic tattoo features beautiful calligraphy, images of writing implements, and the like.\nTattoo Attunement. To attune to this item, you hold the needle to your skin where you want the tattoo to appear, pressing the needle there throughout the attunement process. When the attunement is complete, the needle turns into the ink that becomes the tattoo, which appears on the skin.\nIf your attunement to the tattoo ends, the tattoo vanishes, and the needle reappears in your space.\nMagical Scribing. While this tattoo is on your skin, you can write with your fingertip as if it were an ink pen that never runs out of ink.\nAs an action, you can touch a piece of writing up to one page in length and speak a creature's name. The writing becomes invisible to everyone other than you and the named creature for the next 24 hours. Either of you can dismiss the invisibility by touching the script (no action required). Once used, this action can't be used again until the next dawn.",
+                desc="Produced by a special needle, this magic tattoo features beautiful calligraphy, images of writing implements, and the like.",
                 initial_value="1"
             )
             
 
-            return """name: Magical Scribing
+            return """
+name: Magical Scribing
 automation:
   - type: counter
     counter: Illuminator's Tattoo
@@ -366,11 +382,12 @@ list_display_override: As an action, you can touch a piece of writing up to one 
                 dispType="bubble",
                 reset_to="1",
                 title="Lifewell Tattoo",
-                desc="Produced by a special needle, this magic tattoo features symbols of life and rebirth.\nTattoo Attunement. To attune to this item, you hold the needle to your skin where you want the tattoo to appear, pressing the needle there throughout the attunement process. When the attunement is complete, the needle turns into the ink that becomes the tattoo, which appears on the skin.\nIf your attunement to the tattoo ends, the tattoo vanishes, and the needle reappears in your space.\nNecrotic Resistance. You have resistance to necrotic damage.\nLife Ward. When you would be reduced to 0 hit points, you drop to 1 hit point instead. Once used, this property can't be used again until the next dawn.",
+                desc="Produced by a special needle, this magic tattoo features symbols of life and rebirth.",
                 initial_value="1"
             )
 
-            return """name: Life Ward
+            return """
+name: Life Ward
 automation:
   - type: target
     target: self
@@ -405,11 +422,12 @@ list_display_override: When you would be reduced to 0 hit points, you drop to 1 
                 dispType="bubble",
                 reset_to="1",
                 title="Masquerade Tattoo",
-                desc="Produced by a special needle, this magic tattoo appears on your body as whatever you desire.\nTattoo Attunement. To attune to this item, you hold the needle to your skin where you want the tattoo to appear, pressing the needle there throughout the attunement process. When the attunement is complete, the needle turns into the ink that becomes the tattoo, which appears on the skin.\nIf your attunement to the tattoo ends, the tattoo vanishes, and the needle reappears in your space.\nFluid Ink. As a bonus action, you can shape the tattoo into any color or pattern and move it to any area of your skin. Whatever form it takes, it is always obviously a tattoo. It can range in size from no smaller than a copper piece to an intricate work of art that covers all your skin.\nDisguise Self. As an action, you can use the tattoo to cast the disguise self spell (DC 13 to discern the disguise). Once the spell is cast from the tattoo, it can't be cast from the tattoo again until the next dawn.",
+                desc="Produced by a special needle, this magic tattoo appears on your body as whatever you desire.",
                 initial_value="1"
             )
 
-            return """- name: Fluid Ink
+            return """
+- name: Fluid Ink
   automation:
     - type: text
       text: As a bonus action, you can shape the tattoo into any color or pattern and move it to any area of your skin. Whatever form it takes, it is always obviously a tattoo. It can range in size from no smaller than a copper piece to an intricate work of art that covers all your skin.
@@ -442,16 +460,17 @@ list_display_override: When you would be reduced to 0 hit points, you drop to 1 
             ch.create_cc_nx(
                 name="Shadowfell Brand Tattoo",
                 minVal="0",
-                maxval="1",
+                maxVal="1",
                 reset="long",
                 dispType="bubble",
                 reset_to="1",
                 title="Shadowfell Brand Tattoo",
-                desc="Produced by a special needle, this magic tattoo is dark in color and abstract.\nTattoo Attunement. To attune to this item, you hold the needle to your skin where you want the tattoo to appear, pressing the needle there throughout the attunement process. When the attunement is complete, the needle turns into the ink that becomes the tattoo, which appears on the skin.\nIf your attunement to the tattoo ends, the tattoo vanishes, and the needle reappears in your space.\nShadow Essence. You gain darkvision with a range of 60 feet, and you have advantage on Dexterity (Stealth) checks.\nShadowy Defense. When you take damage, you can use your reaction to become insubstantial for a moment, halving the damage you take. Then the reaction can't be used again until the next sunset.",
+                desc="Produced by a special needle, this magic tattoo is dark in color and abstract.",
                 initial_value="1"
             )
 
-            return """name: Shadowy Defense
+            return """
+name: Shadowy Defense
 automation:
   - type: counter
     counter: Shadowfell Brand Tattoo
@@ -475,7 +494,7 @@ _v: 2
 proper: true
 verb: uses their
 activation_type: 4
-list_display_override: 'When you take damage, you can use your reaction to become insubstantial for a moment, halving the damage you take. Then the reaction can't be used again until the next sunset. Use `-amt #` for damage taken.'
+list_display_override: 'When you take damage, you can use your reaction to become insubstantial for a moment, halving the damage you take. Use `-amt #` for damage taken.'
 """
         case _:
             err(f"ShadowsStride has not setup the {input_list[0]} tattoo, please message him to fix this.")
